@@ -1,15 +1,14 @@
-
 def palindrome_permutation?(string)
-  raise NotImplementedError, "palindrome_permutation? not implemented"
+  # raise NotImplementedError, "palindrome_permutation? not implemented"
+  odds = []
+  character_frequency_table(string).each_value { |char| odds << char if char.odd? }
+  odds.length > 1 ? false : true
+end
 
-  # character frequency table
-  # go through the string
-  # make a hash table
-  # make a key for each character (value of 1)
-  # if that key already exists add 1 to it's value
-
-  # #each_value
-  # count if it's odd
-  # return false if the count is more than 1
-
+def character_frequency_table(string)
+  frequency = {}
+  string.split(//).each do |char|
+    frequency.key?(char) ? frequency[char] += 1 : frequency[char] = 1
+  end
+  frequency
 end
