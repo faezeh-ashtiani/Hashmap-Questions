@@ -1,18 +1,14 @@
 def intersection(list1, list2)
   # raise NotImplementedError, "Intersection not implemented"
+  num_hash = {}
+  list1.each do |num1|
+    num_hash[num1] = {}
+  end
 
-  # takes two integer arrays with unique values
-  # returns their intersection in a new array
+  intersection = []
+  list2.each do |num2|
+    intersection << num2 if num_hash.keys.include?(num2)
+  end
 
-  # with a hash table 
-  # pick the shorter list
-  # make a hash with each list item as a key
-
-  # go through the second list
-  # for each
-  # is there a key that matches that item?
-  # put it in a collection of intersecting items
-
-  # return intersection
-
+  intersection
 end
