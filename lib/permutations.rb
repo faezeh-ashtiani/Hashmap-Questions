@@ -1,17 +1,28 @@
-
 def permutations?(string1, string2)
-  raise NotImplementedError, "permutations? not implemented"
+  # raise NotImplementedError, "permutations? not implemented"
+  string1_hash = character_frequency_table(string1)
 
-  # character frequency table
-  # go trought the first  string and create a hash key with each character
-  # assign value of 1 to that key
-  # if you encunter the character again
-  # add 1 to the value
+  string2.split(//).each do |char|
+    if !string1_hash.key?(char)
+      return false
+    elsif string1_hash[char] == 1
+      string1_hash.delete(char)
+    else
+      string1_hash[char] -= 1
+    end
+  end
 
-  # go through the second string
-  # if a key does not exist for the character - end the operation 
-  # otherwise reduce one from the value 
-  # if the value becomes 0 eliminate that pair from the hash (delete key?)
-  # at the end return true if the hash table is empty
+  string1_hash.empty? ? true : false
+end
 
+def character_frequency_table(string)
+  frequency = {}
+  string.split(//).each do |char|
+    if frequency.key?(char)
+      frequency[char] += 1
+    else
+      frequency[char] = 1
+    end
+  end
+  frequency
 end
